@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b0d10;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: min(1100px, 96%);
+    padding: 25px 0 50px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.subtitle {
+    color: #9ca3af;
+    margin: 8px 0 20px;
+}
+
+.engine {
+    position: relative;
+    width: 100%;
+    height: 580px;
+    overflow: hidden;
+    border-radius: 22px;
+    border: 2px solid #3b4048;
+    background: radial-gradient(circle at 50% 60%, #252b33 0%, #11151a 55%, #07090c 100%);
+    box-shadow: 0 0 40px rgba(0,0,0,.7);
+}
+
+/* =====================
+   CYLINDERS
+===================== */
+
+.cylinder {
+    position: absolute;
+    top: 65px;
+    width: 240px;
+    height: 340px;
+    border: 10px solid #707780;
+    border-radius: 25px 25px 10px 10px;
+    background: #171b20;
+    overflow: hidden;
+    box-shadow: inset 0 0 35px #000, 0 10px 20px rgba(0,0,0,.5);
+}
+
+.cylinder.left {
+    left: 22%;
+    transform: translateX(-50%);
+}
+
+.cylinder.right {
+    left: 78%;
+    transform: translateX(-50%);
+}
+
+/* =====================
+   COMBUSTION CHAMBER
+===================== */
+
+.chamber {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 85px;
+    background: #111;
+    border-bottom: 3px solid #555;
+    overflow: hidden;
+}
+
+/* Air */
+.air {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(80,160,255,.65), rgba(40,80,160,.15));
+    opacity: 0;
+    transition: .1s;
+}
+
+/* Exhaust */
+.exhaust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(100,100,100,.8), rgba(30,30,30,.2));
+    opacity: 0;
+}
+
+/* FIRE */
+.fire {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(.4);
+    transition: .08s;
+    background: radial-gradient(circle, #fff 0%, #ffe600 18%, #ff8c00 42%, #ff2500 65%, transparent 72%);
+}
+
+/* =====================
+   PISTON
+===================== */
+
+.piston {
+    position: absolute;
+    left: 25px;
+    width: 170px;
+    height: 70px;
+    border-radius: 8px 8px 15px 15px;
+    background: linear-gradient(to bottom, #e4e4e4, #9a9a9a 35%, #555 80%);
+    border-bottom: 8px solid #333;
+    box-shadow: 0 4px 12px #000, inset 0 5px 5px rgba(255,255,255,.4);
+}
+
+/* piston rings */
+.piston:before,
+.piston:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #222;
+}
+
+.piston:before {
+    top: 18px;
+}
+
+.piston:after {
+    top: 30px;
+}
+
+/* =====================
+   CONNECTING RODS
+===================== */
+
+.rod {
+    position: absolute;
+    width: 18px;
+    height: 220px;
+    background: linear-gradient(to right, #555, #ddd, #555);
+    border-radius: 20px;
+    transform-origin: 50% 0;
+    box-shadow: 0 0 8px #000;
+}
+
+#rod1 {
+    left: 31%;
+    top: 355px;
+}
+
+#rod2 {
+    left: 69%;
+    top: 355px;
+}
+
+/* =====================
+   CRANKSHAFT
+===================== */
+
+.crank-area {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    height: 150px;
+}
+
+.shaft {
+    position: absolute;
+    top: 70px;
+    left: 12%;
+    width: 76%;
+    height: 18px;
+    background: linear-gradient(to bottom, #aaa, #555, #bbb);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px #000;
+}
+
+.crank {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border: 16px solid #9ba1a8;
+    border-radius: 50%;
+    top: 25px;
+    box-shadow: 0 5px 12px #000;
+    transform-origin: center;
+}
+
+.crank.left {
+    left: 25%;
+}
+
+.crank.right {
+    right: 25%;
+}
+
+.crank-pin {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #d6d6d6;
+    border-radius: 50%;
+    top: 10px;
+    left: 25px;
+    border: 5px solid #444;
+}
+
+/* =====================
+   VALVES
+===================== */
+
+.valve {
+    position: absolute;
+    top: 8px;
+    width: 16px;
+    height: 55px;
+    background: linear-gradient(to right, #555, #ddd, #555);
+    border-radius: 0 0 10px 10px;
+    transition: .05s;
+}
+
+.valve.intake {
+    left: 55px;
+}
+
+.valve.exhaust {
+    right: 55px;
+}
+
+/* =====================
+   LABEL
+===================== */
+
+.cylinder-label {
+    position: absolute;
+    top: 420px;
+    width: 240px;
+    color: #ddd;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.label1 {
+    left: 22%;
+    transform: translateX(-50%);
+}
+
+.label2 {
+    left: 78%;
+    transform: translateX(-50%);
+}
