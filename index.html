@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>2 Cylinder Engine Simulator</title>
+
+<!-- เชื่อมไฟล์ CSS -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚙️ 2 Cylinder Engine Simulator</h1>
+
+    <p class="subtitle">
+        แอนิเมชันเครื่องยนต์ 2 สูบแบบ Parallel Twin
+    </p>
+
+
+    <div class="engine">
+
+        <!-- =========================
+             CYLINDER 1
+        ========================== -->
+
+        <div class="cylinder left" id="cylinder1">
+
+            <div class="chamber">
+
+                <div class="air" id="air1"></div>
+
+                <div class="exhaust-gas" id="exhaust1"></div>
+
+                <div class="fire" id="fire1"></div>
+
+                <!-- วาล์วไอดี -->
+                <div
+                    class="valve intake"
+                    id="intake1">
+                </div>
+
+                <!-- วาล์วไอเสีย -->
+                <div
+                    class="valve exhaust"
+                    id="exhaustValve1">
+                </div>
+
+            </div>
+
+
+            <!-- ลูกสูบ -->
+            <div
+                class="piston"
+                id="piston1">
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             CYLINDER 2
+        ========================== -->
+
+        <div class="cylinder right" id="cylinder2">
+
+            <div class="chamber">
+
+                <div class="air" id="air2"></div>
+
+                <div
+                    class="exhaust-gas"
+                    id="exhaust2">
+                </div>
+
+                <div
+                    class="fire"
+                    id="fire2">
+                </div>
+
+                <!-- วาล์วไอดี -->
+                <div
+                    class="valve intake"
+                    id="intake2">
+                </div>
+
+                <!-- วาล์วไอเสีย -->
+                <div
+                    class="valve exhaust"
+                    id="exhaustValve2">
+                </div>
+
+            </div>
+
+
+            <!-- ลูกสูบ -->
+            <div
+                class="piston"
+                id="piston2">
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             CONNECTING RODS
+        ========================== -->
+
+        <div
+            class="rod"
+            id="rod1">
+        </div>
+
+        <div
+            class="rod"
+            id="rod2">
+        </div>
+
+
+        <!-- =========================
+             CRANKSHAFT
+        ========================== -->
+
+        <div class="crank-area">
+
+            <!-- เพลาหลัก -->
+            <div class="shaft"></div>
+
+
+            <!-- ข้อเหวี่ยงสูบ 1 -->
+            <div
+                class="crank left"
+                id="crank1">
+
+                <div
+                    class="crank-pin">
+                </div>
+
+            </div>
+
+
+            <!-- ข้อเหวี่ยงสูบ 2 -->
+            <div
+                class="crank right"
+                id="crank2">
+
+                <div
+                    class="crank-pin">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ชื่อกระบอกสูบ -->
+
+        <div
+            class="cylinder-label label1">
+
+            CYLINDER 1
+
+        </div>
+
+
+        <div
+            class="cylinder-label label2">
+
+            CYLINDER 2
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CONTROL PANEL
+    ========================== -->
+
+    <div class="controls">
+
+
+        <!-- ปุ่มสตาร์ท -->
+
+        <button id="start">
+
+            ▶ สตาร์ทเครื่อง
+
+        </button>
+
+
+        <!-- ปุ่มดับเครื่อง -->
+
+        <button id="stop">
+
+            ■ ดับเครื่อง
+
+        </button>
+
+
+        <!-- แสดง RPM -->
+
+        <div class="rpm-box">
+
+            <div>
+                RPM
+            </div>
+
+            <div class="rpm-value">
+
+                <span id="rpmText">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ปรับรอบ -->
+
+        <div class="slider-box">
+
+            <label for="rpmSlider">
+
+                ปรับรอบเครื่อง
+
+            </label>
+
+            <input
+                type="range"
+                id="rpmSlider"
+                min="500"
+                max="9000"
+                value="1500"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ENGINE STROKES
+    ========================== -->
+
+    <div class="stroke-info">
+
+
+        <div
+            class="stroke"
+            id="stroke1">
+
+            💨 ดูด
+
+        </div>
+
+
+        <div
+            class="stroke"
+            id="stroke2">
+
+            🌀 อัด
+
+        </div>
+
+
+        <div
+            class="stroke"
+            id="stroke3">
+
+            🔥 ระเบิด
+
+        </div>
+
+
+        <div
+            class="stroke"
+            id="stroke4">
+
+            💨 คาย
+
+        </div>
+
+
+    </div>
+
+</div>
