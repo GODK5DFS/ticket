@@ -1,0 +1,301 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b0d10;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: min(1100px, 96%);
+    padding: 25px 0 50px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.subtitle {
+    color: #9ca3af;
+    margin: 8px 0 20px;
+}
+
+/* =========================
+   ENGINE AREA
+========================= */
+
+.engine {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 580px;
+    margin: 0 auto;
+    background: #15181e;
+    border: 3px solid #2d333f;
+    border-radius: 16px;
+    overflow: hidden; /* เติมค่าที่ขาดไป */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* กระบอกสูบ */
+.cylinder {
+    position: absolute;
+    top: 40px;
+    width: 160px;
+    height: 300px;
+    border: 4px solid #4a5568;
+    border-bottom: none;
+    background: #0d1117;
+    border-radius: 8px 8px 0 0;
+}
+
+.cylinder.left { left: 80px; }
+.cylinder.right { right: 80px; }
+
+.chamber {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* เอฟเฟกต์ภายในกระบอกสูบ */
+.air, .exhaust-gas, .fire {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+}
+
+.air { 
+    background: rgba(56, 189, 248, 0.35); 
+}
+
+.exhaust-gas { 
+    background: rgba(156, 163, 175, 0.4); 
+}
+
+.fire { 
+    background: radial-gradient(circle, rgba(255, 230, 0, 0.9) 0%, rgba(255, 69, 0, 0.8) 60%, transparent 100%); 
+    transition: opacity 0.1s, transform 0.1s;
+}
+
+/* วาล์ว */
+.valve {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 55px;
+    background: #9ca3af;
+    border-radius: 0 0 6px 6px;
+    transition: height 0.05s linear;
+}
+
+.valve.intake { left: 25px; }
+.valve.exhaust { right: 25px; }
+
+/* ลูกสูบ */
+.piston {
+    position: absolute;
+    top: 115px;
+    left: 5px;
+    width: 142px;
+    height: 80px;
+    background: linear-gradient(180deg, #e2e8f0 0%, #64748b 100%);
+    border-radius: 8px 8px 4px 4px;
+    box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.6);
+    z-index: 3;
+}
+
+/* ก้านสูบ */
+.rod {
+    position: absolute;
+    top: 155px;
+    width: 16px;
+    height: 180px;
+    background: linear-gradient(90deg, #cbd5e1, #64748b, #cbd5e1);
+    border-radius: 8px;
+    z-index: 2;
+}
+
+#rod1 { left: 152px; }
+#rod2 { right: 152px; }
+
+/* ข้อเหวี่ยง */
+.crank-area {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+}
+
+.shaft {
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+    width: 520px;
+    height: 20px;
+    background: #334155;
+    border-radius: 10px;
+}
+
+.crank {
+    position: absolute;
+    bottom: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #1e293b;
+    border: 4px solid #475569;
+}
+
+.crank.left { left: 110px; }
+.crank.right { right: 110px; }
+
+.crank-pin {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    width: 20px;
+    height: 20px;
+    background: #f8fafc;
+    border-radius: 50%;
+}
+
+/* ป้ายชื่อสูบ */
+.cylinder-label {
+    position: absolute;
+    bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.label1 { left: 125px; }
+.label2 { right: 125px; }
+
+/* =========================
+   CONTROL PANEL
+========================= */
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    background: #15181e;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #2d333f;
+}
+
+button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#start {
+    background: #16a34a;
+    color: white;
+}
+
+#start:hover {
+    background: #22c55e;
+}
+
+#stop {
+    background: #dc2626;
+    color: white;
+}
+
+#stop:hover {
+    background: #ef4444;
+}
+
+.rpm-box {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d1117;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: 1px solid #1e293b;
+}
+
+.rpm-value {
+    color: #4ade80;
+    font-size: 24px;
+    font-family: monospace;
+}
+
+.slider-box {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: #38bdf8;
+    cursor: pointer;
+}
+
+/* =========================
+   STROKE INFO
+========================= */
+
+.stroke-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stroke {
+    padding: 12px 8px;
+    background: #15181e;
+    border: 1px solid #2d333f;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #64748b;
+    transition: all 0.15s ease;
+}
+
+.stroke.active {
+    background: #0284c7;
+    color: white;
+    border-color: #38bdf8;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
